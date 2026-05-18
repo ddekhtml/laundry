@@ -4,7 +4,7 @@
 <template>
     <div class="w-full py-2 pl-3 bg-white text-title border-b-line border-b-[0.5px] flex flex-row justify-between items-center">
     
-    <div class="text-4xl tracking-wide font-semibold font-dongle">
+    <div class="text-5xl tracking-wide font-semibold font-dongle">
         Cucian.
     </div>
 
