@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+.pattern-background {
+    background-color: white;
+
+    background-image: radial-gradient(
+        #ebebeb 1.5px,
+        transparent 1.5px
+    );
+
+    background-size: 24px 24px;
+}
 @theme{
   --default-font-family: 'Dongle';
   --color-title: #0775D6;
@@ -9,4 +19,5 @@
   --color-second-bg: #F5F5F5;
   --font-dongle: "Dongle";
   --font-lexend: 'Lexend';
+  --color-line: #7f7f7f;
 }

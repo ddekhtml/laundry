@@ -2,10 +2,14 @@
     
 </script>
 <template>
-    <div class="w-ful py-2 pl-3 font-semibold bg-white text-title border-b-body border-b-[0.5px]">
-        <div class="text-4xl tracking-wide">
-            Cucian.
-        </div>
+    <div class="w-full py-2 pl-3 bg-white text-title border-b-line border-b-[0.5px] flex flex-row justify-between items-center">
+    
+    <div class="text-4xl tracking-wide font-semibold font-dongle">
+        Cucian.
+    </div>
+
+    
+
     </div>
 </template>
 
