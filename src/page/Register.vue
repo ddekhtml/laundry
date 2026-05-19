@@ -18,8 +18,8 @@ function handleRegister() {
         no_hp: noHp.value,
         alamat: alamat.value
     })
-
-    
+    localStorage.setItem('role', 'user')
+    router.push('/')
 }
 
 function toLogin() {
@@ -29,10 +29,7 @@ function toLogin() {
 
 <template>
     <div class="min-h-screen overflow-hidden flex items-center justify-center w-full p-4 md:p-6 bg-main-bg font-lexend pattern-background">
-
         <div class="flex flex-col md:flex-row items-center gap-6 bg-white p-6 md:p-8 rounded-3xl shadow-xl w-full max-w-5xl">
-
-            
             <div class="hidden md:flex flex-1 justify-center">
                 <img 
                     src="/src/assets/design/New_Account_pic1.png" 
@@ -123,8 +120,8 @@ function toLogin() {
                     Daftar
                 </button>
 
-                <!-- login -->
-                <div class="text-center mt-4 text-sm">
+                
+                <div class="text-center mt-4 text-base">
                     Sudah punya akun?
                     <span 
                         @click="toLogin"

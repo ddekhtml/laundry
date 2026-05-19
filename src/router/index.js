@@ -4,6 +4,9 @@ import Home from "../page/Home.vue";
 import Register from "../page/Register.vue";
 import Login from "../page/Login.vue";
 import AdminLandingPage from "../page/admin/AdminLandingPage.vue";
+import PesanCucian from "../page/cutomer/cucian/PesanCucian.vue";
+import RincianCucian from "../page/cutomer/cucian/RincianCucian.vue";
+import KelolaCucian from "../page/cutomer/cucian/KelolaCucian.vue";
 function getUser() {
     return {
         // role: 'user'
@@ -39,6 +42,25 @@ const router = createRouter({
         {
             path: '/login',
             component: Login
+        }, {
+            path: '/cucian',
+            children: [
+                {
+                    path: '',
+                    name: 'all-cucian',
+                    component: RincianCucian
+                },
+                {
+                    path: 'pesan',
+                    name: 'post-cucian',
+                    component: PesanCucian
+                },
+                {
+                    path: ':id',
+                    name: 'detail-cucian',
+                    component: KelolaCucian
+                },
+            ]
         }
     ]
 })
