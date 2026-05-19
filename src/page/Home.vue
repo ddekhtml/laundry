@@ -1,5 +1,5 @@
 <script setup>
-    import { useRouter } from 'vue-router';
+    import { useRoute, useRouter } from 'vue-router';
     import Header from '../components/Header.vue';
     import GuestHome from '../components/home/GuestHome.vue';
     import { ref } from 'vue';
@@ -9,7 +9,8 @@
     function toRegister() {
         router.push('/register')
     }
-    const role=ref('user') 
+    const route = useRoute()
+    const role = route.meta.role 
 </script>
 <template>
   <div class="min-h-screen flex flex-col pattern-background">
