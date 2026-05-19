@@ -32,7 +32,7 @@ function toLogin() {
 
         <div class="flex flex-col md:flex-row items-center gap-6 bg-white p-6 md:p-8 rounded-3xl shadow-xl w-full max-w-5xl">
 
-            <!-- gambar -->
+            
             <div class="hidden md:flex flex-1 justify-center">
                 <img 
                     src="/src/assets/design/New_Account_pic1.png" 
@@ -41,14 +41,13 @@ function toLogin() {
                 >
             </div>
 
-            <!-- form -->
             <div class="flex-1 w-full max-w-md">
 
                 <div class="text-title text-3xl md:text-4xl font-semibold text-center md:text-left mb-5">
                     Daftar
                 </div>
 
-                <!-- nama -->
+            
                 <div class="flex flex-col gap-1 mb-3">
                     <label class="text-sm font-medium">
                         Nama
@@ -62,7 +61,7 @@ function toLogin() {
                     >
                 </div>
 
-                <!-- email -->
+           
                 <div class="flex flex-col gap-1 mb-3">
                     <label class="text-sm font-medium">
                         Email
@@ -76,7 +75,7 @@ function toLogin() {
                     >
                 </div>
 
-                <!-- password -->
+              
                 <div class="flex flex-col gap-1 mb-3">
                     <label class="text-sm font-medium">
                         Password
@@ -90,7 +89,7 @@ function toLogin() {
                     >
                 </div>
 
-                <!-- no hp -->
+       
                 <div class="flex flex-col gap-1 mb-3">
                     <label class="text-sm font-medium">
                         No HP
@@ -104,7 +103,6 @@ function toLogin() {
                     >
                 </div>
 
-                <!-- alamat -->
                 <div class="flex flex-col gap-1 mb-4">
                     <label class="text-sm font-medium">
                         Alamat
@@ -118,7 +116,6 @@ function toLogin() {
                     ></textarea>
                 </div>
 
-                <!-- button -->
                 <button
                     @click="handleRegister"
                     class="w-full bg-button text-white py-2.5 rounded-xl text-base font-semibold hover:opacity-90 transition"
