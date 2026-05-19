@@ -6,9 +6,9 @@ import Login from "../page/Login.vue";
 import AdminLandingPage from "../page/admin/AdminLandingPage.vue";
 function getUser() {
     return {
-        role: 'admin'
         // role: 'user'
-        // role: 'guest'
+        // role: 'user'
+        role: 'guest'
     }
 }
 
@@ -20,7 +20,8 @@ const router = createRouter({
             path: '/',
             component: Home,
             meta: {
-                requiresAuth: false
+                requiresAuth: false,
+                role: getUser().role
             }
         },
         {
