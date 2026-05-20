@@ -10,8 +10,8 @@ import KelolaCucian from "../page/cutomer/cucian/KelolaCucian.vue";
 import HistoryCustomer from "../page/cutomer/HistoryCustomer.vue";
 function getUser() {
     return {
-        role: 'admin'
-        // role: 'user'
+        // role: 'admin'
+        role: 'user'
         // role: 'guest'
     }
 }

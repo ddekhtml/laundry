@@ -12,8 +12,17 @@ function toCucian(path = '') {
             <div class="p-4 border border-body w-fit rounded-2xl"><img src="/src/assets/icons/pesan_cucian_icon.png" alt="" class="w-8 object-contain"></div>
             <div>Pesan Cucian</div>
         </div>
-        <div class="flex flex-col items-center gap-2 hover:cursor-pointer">
-            <div class="p-4 border border-body w-fit rounded-2xl"><img src="/src/assets/icons/cucian_icon.png" alt="" class="w-10 object-contain"></div>
+        <div class="flex flex-col items-center gap-2 hover:cursor-pointer relative">
+
+            <div class="p-4 border border-body w-fit rounded-2xl relative">
+                <img src="/src/assets/icons/cucian_icon.png" alt="" class="w-10 object-contain">
+
+            
+                <div class="absolute -top-1 -right-1 bg-button text-white text-md w-6 h-6 flex items-center justify-center rounded-full">
+                    3
+                </div>
+            </div>
+
             <div>Pantau Cucian</div>
         </div>
         <div class="flex flex-col items-center gap-2 hover:cursor-pointer" @click="toCucian()">

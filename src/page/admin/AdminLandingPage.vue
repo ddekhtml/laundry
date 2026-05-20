@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import Header from '../../components/Header.vue';
-import Notif from '../../components/Notif.vue';
+import Notif from '../../components/ListNotifInAdmin.vue';
 import Keuangan from '../../components/Keuangan.vue';
 import { useRoute, useRouter } from 'vue-router';
 const notif = ref(3)

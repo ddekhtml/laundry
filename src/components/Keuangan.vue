@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Pemasukan from './Pemasukan.vue';
+import Pemasukan from './MiniKeuanganInAdmin.vue';
 
 </script>
 
