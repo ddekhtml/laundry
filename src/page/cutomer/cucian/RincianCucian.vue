@@ -1,8 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref, computed} from 'vue'
 import Header from '../../../components/Header.vue'
 import History from '../../../components/History.vue'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
 const data = ref([
   {
     uuid: '7f3c2b10-1a44-4c3d-a9f2-91d01a001111',
@@ -155,10 +157,11 @@ const data = ref([
     type: [7]
   }
 ])
-const is_on =ref('semua')
+const is_on = ref(route.query.status || "semua")
 function applyFilter(filter){
     is_on.value= filter
 }
+
 </script>
 
 <template>
@@ -182,6 +185,12 @@ function applyFilter(filter){
             <div class="border border-line/50 px-6 h-fit text-[25px] rounded-2xl hover:bg-title hover:text-white cursor-pointer" :class="is_on==='semua'?'bg-title text-white' :''" @click="applyFilter('semua')">
               Semua
             </div>
+            <div class="border border-line/50 px-6  h-fit text-[25px] rounded-2xl hover:bg-title hover:text-white cursor-pointer" :class="is_on==='pending'?'bg-title text-white' :''" @click="applyFilter('pending')">
+              Belum Selesai 
+            </div>
+            <div class="border border-line/50 px-6  h-fit text-[25px] rounded-2xl hover:bg-title hover:text-white cursor-pointer" :class="is_on==='selesai'?'bg-title text-white' :''" @click="applyFilter('selesai')">
+              Selesai
+            </div>
 
             <div class="border border-line/50 px-4 h-fit text-[25px] rounded-2xl hover:bg-title hover:text-white cursor-pointer" :class="is_on==='siap_dijemput'?'bg-title text-white' :''" @click="applyFilter('siap_dijemput')">
               Siap Dijemput
@@ -203,9 +212,7 @@ function applyFilter(filter){
               Siap Diantar
             </div>
 
-            <div class="border border-line/50 px-6  h-fit text-[25px] rounded-2xl hover:bg-title hover:text-white cursor-pointer" :class="is_on==='selesai'?'bg-title text-white' :''" @click="applyFilter('selesai')">
-              Selesai
-            </div>
+            
 
           </div>
         </div>

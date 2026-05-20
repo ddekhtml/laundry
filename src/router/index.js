@@ -7,11 +7,13 @@ import AdminLandingPage from "../page/admin/AdminLandingPage.vue";
 import PesanCucian from "../page/cutomer/cucian/PesanCucian.vue";
 import RincianCucian from "../page/cutomer/cucian/RincianCucian.vue";
 import KelolaCucian from "../page/cutomer/cucian/KelolaCucian.vue";
-import HistoryCustomer from "../page/cutomer/HistoryCustomer.vue";
+import LaporanKeuangan from "../page/admin/LaporanKeuangan.vue";
+import Nota from "../page/Nota.vue";
+import Payment from "../page/Payment.vue";
 function getUser() {
     return {
-        // role: 'admin'
-        role: 'user'
+        role: 'admin'
+        // role: 'user'
         // role: 'guest'
     }
 }
@@ -63,11 +65,18 @@ const router = createRouter({
                     component: RincianCucian
                     }
                 ]
+            },
+            {
+                path:"/dashboard/keuangan", 
+                component: LaporanKeuangan
+            },{
+                path:'/nota/:id', 
+                component: Nota
+            }, 
+            {
+                path:'/payment/:id', 
+                component: Payment
             }
-        , {
-            path:"/history", 
-            component: HistoryCustomer
-        }
     ]
 })
 router.beforeEach((to, from, next) => {

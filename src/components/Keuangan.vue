@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import Pemasukan from './MiniKeuanganInAdmin.vue';
 
+const router = useRouter()
+function toDashboardKeuangan(){
+    router.push('/dashboard/keuangan')
+}
 </script>
 
 <template>
@@ -15,7 +20,7 @@ import Pemasukan from './MiniKeuanganInAdmin.vue';
             <div>
                 Hari ini 
             </div>
-            <div class="underline text-title">
+            <div class="underline text-title hover:cursor-pointer" @click="toDashboardKeuangan()">
                 Lihat semua pemasukan >
             </div>
         </div>

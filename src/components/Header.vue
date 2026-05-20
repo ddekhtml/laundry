@@ -17,7 +17,7 @@
             class="w-4 object-contain"
         >
 
-        <div class=" text-2xl leading-none">
+        <div class=" text-[20px]  font-lexend leading-none">
             Naufal
         </div>
 

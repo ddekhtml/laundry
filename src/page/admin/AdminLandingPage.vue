@@ -10,6 +10,9 @@ const router= useRouter()
 function toCucian(id=''){
     router.push(`/cucian/${id}`)
 }
+function toDashboardKeuangan(){
+    
+}
 </script>
 <template>
     <div class="min-h-screen flex flex-col pattern-background ">
