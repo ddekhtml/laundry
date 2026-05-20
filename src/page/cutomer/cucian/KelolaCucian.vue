@@ -2,8 +2,9 @@
     
 </script>
 <template>
-    <div>
-        
+   <div class="min-h-screen flex flex-col pattern-background">
+
+    <Header />
     </div>
 </template>
 

@@ -3,8 +3,13 @@ import { ref } from 'vue';
 import Header from '../../components/Header.vue';
 import Notif from '../../components/Notif.vue';
 import Keuangan from '../../components/Keuangan.vue';
+import { useRoute, useRouter } from 'vue-router';
 const notif = ref(3)
     
+const router= useRouter()
+function toCucian(id=''){
+    router.push(`/cucian/${id}`)
+}
 </script>
 <template>
     <div class="min-h-screen flex flex-col pattern-background ">
@@ -13,7 +18,7 @@ const notif = ref(3)
         <div class="grid grid-rows-2 md:grid-cols-2 mt-10 md:mt-15 xl:mt-20 mx-5 gap-5 md:gap-10">
             <div class="flex-col flex">
                 <div class="flex flex-row justify-center gap-7 mb-8 text-xl">
-                    <div class="flex flex-col items-center ">
+                    <div class="flex flex-col items-center hover:cursor-pointer " @click="toCucian()">
 
                         <div class="relative">
                             <img 
@@ -32,7 +37,7 @@ const notif = ref(3)
                         </div>
 
                     </div>
-                    <div class="flex flex-col items-center">
+                    <div class="flex flex-col items-center hover:cursor-pointer" @click="toCucian()">
                         <img src="/src/assets/icons/cucian_icon.png" alt="" class="w-17 p-2 rounded-2xl  border border-line">
                         <div class="text-center">
                             Kelola Cucian
@@ -56,7 +61,7 @@ const notif = ref(3)
                                 {{ notif }}
                             </div>
                         </div>
-                        <div class="text-xl text-title underline ml-auto ">
+                        <div class="text-xl text-title underline ml-auto hover:cursor-pointer " @click="toCucian()">
                             Lihat Semua Pesanan >
                         </div>
                     </div>
