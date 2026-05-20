@@ -56,13 +56,14 @@ function getCucian(){
                 </div>
                 <div class="text-[22px] text-black/70 flex gap-2" :class="{'text-button' :props.status==='belum_dibayar'}">
                     {{status_readable}}
-                    <span
-                        v-if="props.status === 'belum_dibayar'"
-                        class="text-white bg-button w-5 h-5 text-md rounded-full flex items-center justify-center"
-                        >
-                        !
-                    </span>
+                    
                 </div>
+                <span
+                    v-if="props.status === 'belum_dibayar'"
+                    class="text-white bg-button px-5 text-[20px] rounded-full flex items-center justify-center"
+                    >
+                    Bayar Sekarang
+                </span>
             </div>
         </div>
         
