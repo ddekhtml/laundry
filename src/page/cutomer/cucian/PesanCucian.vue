@@ -5,8 +5,8 @@ import { ref } from 'vue'
 
 const layanan = ref('')
 const pembayaran = ref('')
-const sprei = ref(false)
-const selimut = ref(false)
+const sprei = ref('0')
+const selimut = ref('0')
 
 const gunakanDataAkun = ref(false)
 
@@ -85,12 +85,12 @@ function pesanCucian() {
     <div class="font-medium text-lg">Tambahan Cucian</div>
 
     <label class="flex items-center gap-3">
-        <input type="checkbox" v-model="sprei" class="w-5 h-5">
+        <input type="number" min=0 v-model.number="sprei" class="w-50 h-10 border border-line rounded-2xl" style="padding: 0 0 0 20px">
         <span>Sprei</span>
     </label>
 
     <label class="flex items-center gap-3">
-        <input type="checkbox" v-model="selimut" class="w-5 h-5">
+        <input type="number" min=0 v-model.number="selimut" class="w-50 h-10 border border-line rounded-2xl" style="padding: 0 0 0 20px">
         <span>Selimut</span>
     </label>
 
