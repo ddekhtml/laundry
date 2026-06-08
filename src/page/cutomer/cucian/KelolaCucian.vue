@@ -3,7 +3,7 @@ import { useRoute, useRouter } from 'vue-router'
 import Header from '../../../components/Header.vue';
 import { computed, ref } from 'vue';
 
-const is_admin = ref(false)
+const is_admin = ref(true)
 const status = ref('')
 const berat = ref(0)
 const harga = ref(0)
@@ -61,7 +61,7 @@ function toCucian(){
                 {{ data.Name }}
             </div>
         </div>
-        <div v-if="is_admin === true" class="flex flex-row gap-5">
+        <div class="flex flex-row gap-5">
   
             <div class="flex items-center place-content-center gap-1">
                 <div class="font-medium text-nowrap">
@@ -73,27 +73,32 @@ function toCucian(){
                 </a>
             </div>
 
-            <div class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+            <div v-if="is_admin === true" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
                 {{ data.noHP }}
+            </div>
+            <div v-if="is_admin === false" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                (No Wa Admin)
             </div>
 
         </div>
-        <div v-if="is_admin === true" class="flex flex-row gap-5">
-  
-            <div class="flex items-center place-content-center gap-1">
-                <div class="font-medium text-nowrap">
-                Alamat
+        <div v-if="is_admin === true">
+            <div class="flex flex-row gap-5">
+    
+                <div class="flex items-center place-content-center gap-1">
+                    <div class="font-medium text-nowrap">
+                    Alamat
+                    </div>
                 </div>
 
-                <a :href="data.Gmaps" target="_blank">
-                <div class="pi pi-link text-sm text-title/80 h-fit"></div>
-                </a>
+                <div class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                    {{ data.Alamat }}
+                </div>
             </div>
-
-            <div class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
-                {{ data.Alamat }}
-            </div>
-
+            <a :href="data.Gmaps" target="_blank"> 
+                <div class="w-full bg-button mt-5 text-center text-white rounded-2xl text-2xl hover:bg-amber-600 hover:cursor-pointer">
+                    Lihat di Google Maps
+                </div> 
+            </a>
         </div>
         <div class="flex gap-5">
             <div class="text-nowrap">
