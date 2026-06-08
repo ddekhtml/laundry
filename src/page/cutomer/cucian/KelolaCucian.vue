@@ -3,6 +3,7 @@ import { useRoute, useRouter } from 'vue-router'
 import Header from '../../../components/Header.vue';
 import { computed, ref } from 'vue';
 
+const is_admin = ref(false)
 const status = ref('')
 const berat = ref(0)
 const harga = ref(0)
@@ -15,11 +16,12 @@ const data = ref({
     'Gmaps': 'https://share.google/w4wvjP3cKMNVqkKSu', 
     'Jenis Layanan' : 'Cuci Kering', 
     'Metode Pembayaran' : 'QRIS', 
-    'Berat': '', 
-    'Tambahan': 'Sprei', 
-    'Harga' : '', 
+    'Berat': '0', 
+    'Sprei': '1',
+    'Selimut': '2',
+    'Harga' : '0', 
     'Tanggal Selesai' : '17 Agustus 2045', 
-    'Status':'Cuci Kering', 
+    'Status':'Belum Bayar', 
 })
 const linkWA = computed(() => {
   const nomor = data.value.noHP
@@ -51,7 +53,7 @@ function toCucian(){
                     Rincian Pesanan
                 </div>
             </div>
-        <div class="flex gap-5 mt-5">
+        <div v-if="is_admin === true" class="flex gap-5 mt-5">
             <div>
                 Nama
             </div>
@@ -59,7 +61,7 @@ function toCucian(){
                 {{ data.Name }}
             </div>
         </div>
-        <div class="flex flex-row gap-5">
+        <div v-if="is_admin === true" class="flex flex-row gap-5">
   
             <div class="flex items-center place-content-center gap-1">
                 <div class="font-medium text-nowrap">
@@ -76,7 +78,7 @@ function toCucian(){
             </div>
 
         </div>
-        <div class="flex flex-row gap-5">
+        <div v-if="is_admin === true" class="flex flex-row gap-5">
   
             <div class="flex items-center place-content-center gap-1">
                 <div class="font-medium text-nowrap">
@@ -97,7 +99,11 @@ function toCucian(){
             <div class="text-nowrap">
                 Jenis Layanan
             </div>
-            <div class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+            <div v-if="is_admin === true" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                {{ data['Jenis Layanan'] }}
+            </div>
+
+            <div v-if="is_admin === false" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
                 {{ data['Jenis Layanan'] }}
             </div>
         </div>
@@ -105,8 +111,36 @@ function toCucian(){
             <div class="text-nowrap">
                 Metode Pembayaran
             </div>
-            <div class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+            <div v-if="is_admin === true" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
                 {{ data['Metode Pembayaran'] }}
+            </div>
+            <div v-if="is_admin === false" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                {{ data['Metode Pembayaran'] }}
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="flex items-center">
+                <div class="mr-5">
+                    Sprei
+                </div>
+                <div v-if="is_admin === true" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                    {{ data.Sprei }}
+                </div>
+                <div v-if="is_admin === false" class="mr-2 bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                    {{ data.Sprei }}
+                </div>
+            </div> 
+             <div class="flex items-center gap-2">
+                <div class="mr-5">
+                    Selimut
+                </div>
+
+                <div v-if="is_admin === true" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                    {{ data.Selimut }}
+                </div>
+                <div v-if="is_admin === false" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                    {{ data.Selimut }}
+                </div>
             </div>
         </div>
         <div class="grid grid-cols-2 gap-8">
@@ -115,7 +149,7 @@ function toCucian(){
                     Berat
                 </div>
 
-                <input
+                <input v-if="is_admin === true" 
                     type="number"
                     step="0.1"
                     min="0"
@@ -123,7 +157,9 @@ function toCucian(){
                     placeholder="0"
                     v-model="berat"
                 >
-
+                <div v-if="is_admin === false" class="mr-2 bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                    {{ data.Berat }}
+                </div>
                 <div>
                     kg
                 </div>
@@ -133,23 +169,16 @@ function toCucian(){
                     Harga
                 </div>
 
-                <input
+                <input v-if="is_admin === true" 
                     type="number"
                     min="0"
                     class="mr-2 border w-full border-gray-300 rounded-xl pl-5 outline-none focus:ring-2 focus:ring-button"
                     placeholder="0"
                     v-model="harga"
                 >
-
-                
+                <div v-if="is_admin === false" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60"">
+                    {{ data.Harga }}
                 </div>
-        </div>
-        <div class="flex gap-5">
-            <div>
-                Tambahan
-            </div>
-            <div class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
-                {{ data.Tambahan }}
             </div>
         </div>
         <div class="flex gap-5 ">
@@ -165,7 +194,7 @@ function toCucian(){
                 Status
             </div>
 
-            <select
+            <select v-if="is_admin === true" 
                 v-model="status"
                 class="border border-line/60 px-2 rounded-xl w-full outline-none focus:ring-2 focus:ring-button"
             >
@@ -179,10 +208,19 @@ function toCucian(){
                 <option value="setrika3"></option>
                 <option value="setrika1"></option>
             </select>
+            <div v-if="is_admin === false" class="bg-line/10 w-full px-2 rounded border hover:cursor-not-allowed border-line/40 text-line/60">
+                {{ data.Status }}
+            </div>
         </div>
-        <div class="w-full bg-button text-center text-white rounded-2xl text-3xl hover:bg-amber-600 hover:cursor-pointer">
+        <div v-if="is_admin === true" class="w-full bg-button text-center text-white rounded-2xl text-3xl hover:bg-amber-600 hover:cursor-pointer">
             Simpan
         </div>
+        <span
+            v-if="data.Status === 'Belum Bayar' && is_admin === false"
+            class="w-full bg-button text-center text-white rounded-2xl text-3xl hover:bg-amber-600 hover:cursor-pointer"
+            >
+            Bayar Sekarang
+        </span>
         </div>
         <div class="hidden md:flex justify-center items-center">
             <img
@@ -192,6 +230,5 @@ function toCucian(){
             />
         </div>
     </div>
-    
-  </div>
+    </div>
 </template>
