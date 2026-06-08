@@ -14,6 +14,7 @@ const nama = ref('')
 const noHp = ref('')
 const alamat = ref('')
 const router = useRouter()
+const gmaps = ref('')
 
 
 function pesanCucian() {
@@ -25,10 +26,10 @@ function pesanCucian() {
         gunakanDataAkun: gunakanDataAkun.value,
         nama: gunakanDataAkun.value ? 'Naufal (akun)' : nama.value,
         noHp: gunakanDataAkun.value ? '08123456789' : noHp.value,
-        alamat: gunakanDataAkun.value ? 'Semarang' : alamat.value
+        alamat: gunakanDataAkun.value ? 'Semarang' : alamat.value, 
+        gmaps: gunakanDataAkun.value ? 'https://www.google.com/maps' : gmaps.value, 
     })
     router.push('/')
-
 }
 
 
@@ -152,9 +153,11 @@ function pesanCucian() {
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="font-medium">Link Google Maps</label>
-                                <input v-model="gmaps"
+                                <input v-if="!gunakanDataAkun" v-model="gmaps"
                                     class="border border-line rounded-2xl px-4 py-3" />
-                                
+                                <div v-else class="text-line hover:cursor-not-allowed bg-line/10 rounded-2xl px-4 py-3 border border-line/10">
+                                    https://www.google.com/maps/@-7.0516736,110.3921152,14z?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D
+                                </div>
                             </div>
 
                         </div>

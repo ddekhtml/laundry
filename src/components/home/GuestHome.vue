@@ -26,7 +26,7 @@ function toLogin(){
                 @click="toRegister"
             >
                 <div class="hidden md:block">
-                    Masuk
+                    Daftar
                 </div>
                 <div class="md:hidden">
                     Belum punya akun? <span class="text-button underline">Daftar</span>

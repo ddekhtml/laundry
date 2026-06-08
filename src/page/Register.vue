@@ -9,17 +9,66 @@ const email = ref('')
 const password = ref('')
 const noHp = ref('')
 const alamat = ref('')
+const gmaps = ref('')
 
-function handleRegister() {
-    console.log({
-        nama: nama.value,
-        email: email.value,
-        password: password.value,
-        no_hp: noHp.value,
-        alamat: alamat.value
-    })
-    localStorage.setItem('role', 'user')
-    router.push('/')
+import axios from 'axios'
+
+async function handleRegister() {
+    try {
+        // Validasi kosong
+        if (
+            !nama.value ||
+            !email.value ||
+            !password.value ||
+            !noHp.value ||
+            !alamat.value
+        ) {
+            alert('Semua field wajib diisi')
+            return
+        }
+
+        // Validasi email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+        if (!emailRegex.test(email.value)) {
+            alert('Format email tidak valid')
+            return
+        }
+
+        // Validasi password
+        if (password.value.length < 6) {
+            alert('Password minimal 6 karakter')
+            return
+        }
+
+        const payload = {
+            name: nama.value,
+            email: email.value,
+            password: password.value,
+            no_hp: noHp.value,
+            alamat: alamat.value,
+            gmaps: gmaps.value
+        }
+
+        const response = await axios.post(
+            'http://localhost:3000/auth/register',
+            payload
+        )
+
+        console.log(response.data)
+
+        alert('Register berhasil')
+
+        router.push('/login')
+
+    } catch (error) {
+        console.error(error)
+
+        alert(
+            error.response?.data?.message ||
+            'Terjadi kesalahan'
+        )
+    }
 }
 
 function toLogin() {
@@ -111,6 +160,18 @@ function toLogin() {
                         placeholder="Masukkan alamat"
                         class="w-full border border-gray-300 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-button resize-none"
                     ></textarea>
+                </div>
+                <div class="flex flex-col gap-1 mb-3">
+                    <label class="text-sm font-medium">
+                        Link Google Maps 
+                    </label>
+
+                    <input
+                        v-model="gmaps"
+                        type="text"
+                        placeholder="Masukkan link google maps"
+                        class="w-full border border-gray-300 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-button"
+                    >
                 </div>
 
                 <button
